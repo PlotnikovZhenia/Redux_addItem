@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import * as actions from '../../Redux/actions';
+import * as actions from '../../../redux/actions';
 import classes from './ToDoHeader.module.scss';
 
 
@@ -17,6 +17,9 @@ const ToDoHeader=({visibleAllDone,visibleDone,countsUnDone,visibleNotDone,counts
         </>
     );
   }
-  
-  export default connect(null, actions) (ToDoHeader);
+  const mapStateToProps = (state) => {
+    const {countsUnDone,countsAllDone,countsDone} = state;
+    return {countsUnDone,countsAllDone,countsDone };
+  };
+  export default connect(mapStateToProps, actions) (ToDoHeader);
   

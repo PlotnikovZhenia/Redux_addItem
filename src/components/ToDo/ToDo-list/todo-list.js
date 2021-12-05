@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import * as actions from '../../../redux/actions';
 import './todo-list.scss';
 
-const TodoList= ({todoDate}) => {
+const TodoList= ({todoDate, deleteItem, changeItemDone}) => {
   const elements = todoDate.map((item, index) => {
     const { id, ...itemProps } = item;
     return (
       <tr key={id} className="table-group-item">
-        <TodoListItem {...itemProps } index={index} />
+        <TodoListItem {...itemProps }  onDeleted={()=>deleteItem(id)} changeItemDone={()=>changeItemDone(id)} index={index} />
       </tr>
     );
   });
@@ -22,8 +22,8 @@ const TodoList= ({todoDate}) => {
   );
 };
 const mapStateToProps = (state) => {
-  const {todoDate} = state;
-  return { todoDate };
+  const {todoDate,beforeFilterDate} = state;
+  return { todoDate,beforeFilterDate};
 };
 
 export default connect(mapStateToProps,actions) (TodoList);

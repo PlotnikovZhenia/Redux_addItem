@@ -8,8 +8,10 @@ const NewTodo=({addItem})=>{
         setText(event.target.value);
     }
 const pushItem=()=>{
+    if(text){
     addItem(text);
     setText('');
+    }
 }
     return(
     <>

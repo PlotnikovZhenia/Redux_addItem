@@ -1,4 +1,6 @@
 import React,{useState} from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../redux/actions';
 
 const SearchPanel = ({visibleSearch}) => {
   const [searchText,setSearchText]=useState('');
@@ -13,4 +15,4 @@ const SearchPanel = ({visibleSearch}) => {
   );
 };
 
-export default SearchPanel;
+export default connect(null,actions) (SearchPanel);
